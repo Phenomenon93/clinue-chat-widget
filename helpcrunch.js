@@ -1,4 +1,4 @@
-/* 클리뉴코리아 HelpCrunch 채팅 위젯 로더 (카페24 스크립트 태그용, 2026-10-27)
+/* 클리뉴코리아 HelpCrunch 채팅 위젯 로더 (카페24 스크립트 태그용, 2026-10-27, v2 즉시 로드)
    HelpCrunch 공식 설치 코드와 동일. 카페24 스킨을 수정하지 않고 앱 스크립트 태그로 주입한다. */
 (function (w, d) {
   w.helpcrunchSettings = { organization: 'clinue', appId: '5653b978-d342-4995-835e-a9f9b22103a3' };
@@ -14,5 +14,6 @@
     s.src = url;
     (d.body || d.head).appendChild(s);
   }
-  if (d.readyState === 'complete') { load(); } else { w.addEventListener('load', load, false); }
+  // v2: 이미지 다 받을 때까지(load) 기다리지 않고 바로 로드
+  if (d.body) { load(); } else { d.addEventListener('DOMContentLoaded', load, false); }
 })(window, document);
