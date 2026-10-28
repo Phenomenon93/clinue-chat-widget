@@ -1,0 +1,19 @@
+/* 클리뉴코리아 HelpCrunch 채팅 위젯 로더 — 헬로멜로 (카페24 스크립트 태그용, 2026-10-28, helpcrunch.js v2와 동일·위젯만 다름)
+   HelpCrunch 공식 설치 코드와 동일. 카페24 스킨을 수정하지 않고 앱 스크립트 태그로 주입한다. */
+(function (w, d) {
+  w.helpcrunchSettings = { organization: 'clinue', appId: 'c9363a66-6909-43f4-9d5a-06a8a09adb7f' };
+  var url = 'https://embed.helpcrunch.com/sdk.js';
+  w.HelpCrunch = w.HelpCrunch || function () { w.HelpCrunch.q.push(arguments); };
+  w.HelpCrunch.q = w.HelpCrunch.q || [];
+  function load() {
+    var list = d.getElementsByTagName('script');
+    for (var i = 0; i < list.length; i++) { if (list[i].src === url) { return; } }
+    var s = d.createElement('script');
+    s.async = true;
+    s.type = 'text/javascript';
+    s.src = url;
+    (d.body || d.head).appendChild(s);
+  }
+  // v2: 이미지 다 받을 때까지(load) 기다리지 않고 바로 로드
+  if (d.body) { load(); } else { d.addEventListener('DOMContentLoaded', load, false); }
+})(window, document);
